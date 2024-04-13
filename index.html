@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Bottom Navigation</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<style>
+  iframe {
+  	 margin:0; 
+     padding:0;     
+     height: 90vh;
+     overflow: hidden;
+  } 
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .content {
+    flex-grow: 1;
+    display: none;
+    padding: 20px;
+  }
+
+  #home {
+    display: block;
+  }
+
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .bottom-nav a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+  }
+
+  .bottom-nav a:hover {
+    color: #ddd;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+</style>
+</head>
+<body onload="showContent('newsfeed')">
+
+<div class="container">
+  <div id="newsfeed" class="content">
+    <iframe frameborder="0" id="iframe" scrolling="no" src="//www.boxicons.com"></iframe>
+  </div>
+  <div id="search" class="content">
+    <h2>Search</h2>
+    <p>This is the search page.</p>
+  </div>
+  <div id="notifications" class="content">
+    <h2>Notifications</h2>
+    <p>This is your notifications page.</p>
+  </div>
+  <div id="jobs" class="content">
+    <h2>Jobs</h2>
+    <p>This is your jobs page.</p>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="#" onclick="showContent('newsfeed')">
+      <i class='bx bx-home'></i>
+    </a>
+    <a href="#" onclick="showContent('search')">
+      <i class='bx bx-search-alt'></i>
+    </a>
+    <a href="#" onclick="showContent('notifications')">
+      <i class='bx bx-bell'></i>
+    </a>
+    <a href="#" onclick="showContent('jobs')">
+      <i class='bx bx-bookmark'></i>
+    </a>
+  </div>
+</div>
+
+<script>
+  function showContent(contentId) {
+    var contents = document.getElementsByClassName('content');
+    for (var i = 0; i < contents.length; i++) {
+      contents[i].style.display = 'none';
+    }
+    document.getElementById(contentId).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
